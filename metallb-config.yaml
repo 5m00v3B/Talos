@@ -1,0 +1,20 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: mlb-network-pool
+  namespace: metallb-system
+spec:
+  # The block of IP addresses MetalLB is allowed to hand out.
+  # You can hand out a single IP or a range. Let's give it a dedicated range including your .230 address.
+  addresses:
+    - 192.168.1.230-192.168.1.235
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: mlb-l2-advertisement
+  namespace: metallb-system
+spec:
+  # This tells MetalLB to use Layer 2 (ARP) to announce the IPs from the pool above
+  ipAddressPools:
+    - mlb-network-pool

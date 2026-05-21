@@ -1,0 +1,16 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-share
+provisioner: nfs.csi.k8s.io
+parameters:
+  server: truenas # Your NFS Server/TrueNAS IP
+  share: /mnt/Pool01_4TB_Mirror/Talos # Your actual NFS export path
+  subDir: "${pvc.metadata.namespace}/${pvc.metadata.name}"
+  mountPermissions: "0777"
+mountOptions:
+  - nfsvers=4.2
+  - hard
+  - noatime
+  - rsize=1048576
+  - wsize=1048576

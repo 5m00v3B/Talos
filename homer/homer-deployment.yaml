@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homer
+  namespace: default
+  labels:
+    app: homer
+spec:
+  replicas: 2 # Your updated replica count
+  selector:
+    matchLabels:
+      app: homer
+  template:
+    metadata:
+      labels:
+        app: homer
+    spec:
+      # --- THIS GUARANTEES HIGH AVAILABILITY ACROSS NODES ---
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - homer
+              topologyKey: "kubernetes.io/hostname"
+      # -----------------------------------------------------
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: homer
+          image: b4bz/homer:latest
+          ports:
+            - containerPort: 8080
+              name: http
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: nfs-config-volume
+              mountPath: /www/assets
+          env:
+            - name: INIT_ASSETS
+              value: "0"
+      volumes:
+        - name: nfs-config-volume
+          persistentVolumeClaim:
+            claimName: homer-config-pvc
