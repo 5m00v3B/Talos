@@ -22,7 +22,7 @@ ssh root@pve02 <<-EOF
 	  --startup "order=1" \
 	  --tags "linux;vm"
 	qm start 201
-
+	sleep 10
         qm stop 203
         qm destroy 203 --purge
 	qm create 203 \
@@ -44,7 +44,7 @@ ssh root@pve02 <<-EOF
 	  --startup "order=2,up=30" \
 	  --tags "linux;vm"
 	qm start 203
-        
+        sleep 10
         qm stop 204
         qm destroy 204 --purge
 	qm create 204 \
@@ -66,6 +66,7 @@ ssh root@pve02 <<-EOF
 	  --startup "order=3,up=60" \
 	  --tags "linux;vm"
 	qm start 204
+	sleep 10
 EOF
 
 ssh root@pve03 <<-EOF
@@ -89,7 +90,7 @@ ssh root@pve03 <<-EOF
 	  --startup "order=1" \
 	  --tags "linux;vm"
 	qm start 202
-
+	sleep 10
 	qm stop 205
 	qm destroy 205 --purge
 	qm create 205 \
