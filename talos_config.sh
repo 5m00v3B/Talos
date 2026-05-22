@@ -28,6 +28,7 @@ talosctl apply-config --insecure --nodes 192.168.1.202 --file _out/controlplane.
 talosctl apply-config --insecure --nodes 192.168.1.203 --file _out/controlplane.yaml
 talosctl apply-config --insecure --nodes 192.168.1.204 --file _out/worker.yaml
 talosctl apply-config --insecure --nodes 192.168.1.205 --file _out/worker.yaml
+sleep 60
 
 # 3. Target control-plane and bootstrap etcd sequence
 echo -e "\n${YELLOWBOLD}[3/6] Initializing endpoints and executing bootstrap loop...${NC}"
