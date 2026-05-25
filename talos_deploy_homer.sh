@@ -49,6 +49,7 @@ done
 # 5. Spin up the Core Workload Application Layer
 echo -e "\n${YELLOWBOLD}[3/4] Launching Homer Deployment Workload...${NC}"
 kubectl apply -f homer/homer-deployment.yaml
+kubectl apply -f homer/homer-service.yaml
 
 # 6. Monitor rollout live until fully ready
 echo -e "\n${YELLOWBOLD}[4/4] Tracking container lifecycle rollout...${NC}"
