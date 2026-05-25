@@ -114,3 +114,4 @@ ssh root@pve03 <<-EOF
 	qm start 205
 EOF
 
+sleep 120

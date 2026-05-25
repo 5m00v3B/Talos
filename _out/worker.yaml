@@ -4,10 +4,10 @@ persist: true
 # Provides machine specific configuration options.
 machine:
     type: worker # Defines the role of the machine within the cluster.
-    token: hm9gki.tyf85yy9kgfgjdvh # The `token` is used by a machine to join the PKI of the cluster.
+    token: 28wq4o.nll220qrd1m0fwz5 # The `token` is used by a machine to join the PKI of the cluster.
     # The root certificate authority of the PKI.
     ca:
-        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQekNCOHFBREFnRUNBaEVBNGdQL3BKL0h2bmZhdVFmNDQveE1kakFGQmdNclpYQXdFREVPTUF3R0ExVUUKQ2hNRmRHRnNiM013SGhjTk1qWXdOVEl5TVRRME5EVTBXaGNOTXpZd05URTVNVFEwTkRVMFdqQVFNUTR3REFZRApWUVFLRXdWMFlXeHZjekFxTUFVR0F5dGxjQU1oQU4rSWRzUUoxamR5ZEpHOWY3VHdoaHYvY2xZVWMrcmNkTmRZCkpqUUFydWZjbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3RUcKQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRk1uMEZmV2JWcjI4UVdGcApORzlTK3ZsT2ptRUNNQVVHQXl0bGNBTkJBR0toSy9IR1lwNjlKQUhPRndveW5uRkhBTnNaZ0owNTBaUW9VME16CnhKN2UyUVA0K1BjUHhhQWs2TXN2ZFBYc2llNGZjZU9VVFZlc1BnaTYzbzZKN0FnPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQekNCOHFBREFnRUNBaEVBMzU2dTZNS0ZDUWJTZzd2cXZTdkNzREFGQmdNclpYQXdFREVPTUF3R0ExVUUKQ2hNRmRHRnNiM013SGhjTk1qWXdOVEl5TWpBMU5EVTFXaGNOTXpZd05URTVNakExTkRVMVdqQVFNUTR3REFZRApWUVFLRXdWMFlXeHZjekFxTUFVR0F5dGxjQU1oQUw5MEZuMnVHaUlKeUJ0S1EvbE9pNFFiZGZTc2N3YVRKYXR1ClI0SEVHNldvbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3RUcKQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkxJZWh4b0xuR0lUN3R4MgpaTUNXQkwvMmpVYWZNQVVHQXl0bGNBTkJBS3lsbzdLR2Q4ZHRsU1pBVmtsbUJPT0txUkR6cWJRV1Z6MHBreEMvCjhFcWc4TjFHbGJHSHcyUlI4ZDlsQXY2emlxT2Vkc2V0TXVnb2EvQzVTYnZNL0FFPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         key: ""
     # Extra certificate subject alternative names for the machine's certificate.
     certSANs: []
@@ -425,8 +425,8 @@ machine:
     #     exampleTaint: exampleTaintValue:NoSchedule
 # Provides cluster specific configuration options.
 cluster:
-    id: qRNnkt6FFmQ1qnN8oXT7OQL35feIm9LjEoqcRt5RX3k= # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
-    secret: WCM0N8YO47OHsv7KUQBmp3TD44j8q4aNizA/MAT5Ro0= # Shared secret of cluster (base64 encoded random 32 bytes).
+    id: c5X70EuxjeGqirTOeCBjyYaaDJoO6ZJ1FWGFoH5bn78= # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
+    secret: 62yWSmf5MsaoT/STzBXaFhqA5nqnHnRQhYJzmMns5XU= # Shared secret of cluster (base64 encoded random 32 bytes).
     # Provides control plane specific configuration options.
     controlPlane:
         endpoint: https://192.168.1.201:6443 # Endpoint is the canonical controlplane endpoint, which can be an IP address or a DNS hostname.
@@ -447,10 +447,10 @@ cluster:
         #     # URLs containing manifests to apply for the CNI.
         #     urls:
         #         - https://docs.projectcalico.org/archive/v3.20/manifests/canal.yaml
-    token: d43gt9.f609lvy39pkm947r # The [bootstrap token](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/) used to join the cluster.
+    token: p3tp21.0b9t982s152b61an # The [bootstrap token](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/) used to join the cluster.
     # The base64 encoded root certificate authority used by Kubernetes.
     ca:
-        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpekNDQVRDZ0F3SUJBZ0lSQUl6NjUvaDFHTms3YkVUM3BMMlJxM1l3Q2dZSUtvWkl6ajBFQXdJd0ZURVQKTUJFR0ExVUVDaE1LYTNWaVpYSnVaWFJsY3pBZUZ3MHlOakExTWpJeE5EUTBOVFJhRncwek5qQTFNVGt4TkRRMApOVFJhTUJVeEV6QVJCZ05WQkFvVENtdDFZbVZ5Ym1WMFpYTXdXVEFUQmdjcWhrak9QUUlCQmdncWhrak9QUU1CCkJ3TkNBQVNzV0pJZ01BeWJOalFJZm1iN09RQnhsSUxMOW1wbE45b3FXYnlNaGxlcDFVNXYybXhLYTMxcmxlejcKdUs0TWcwZWt1UUhIQS9EVm5Oblk4d21xSGk1YW8yRXdYekFPQmdOVkhROEJBZjhFQkFNQ0FvUXdIUVlEVlIwbApCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPCkJCWUVGSHE4M3Q3elRuYU52L1VRbGsrQmx4UG5qWUtnTUFvR0NDcUdTTTQ5QkFNQ0Ewa0FNRVlDSVFEaFdUTEEKSE9TTTR3QXBXbmw5UERQemQxVE9lZ3lXL0hURFF0WHZSWDA5UUFJaEFJQ3BKSXQvNWlqeG9rSTB2YXhxdUlFSwp1d2E0SmIrcVpPR0pwcTlvcWdJdAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpakNDQVRDZ0F3SUJBZ0lSQU5wcVBWTWJKZ09RRFdldHZTSUhKWDR3Q2dZSUtvWkl6ajBFQXdJd0ZURVQKTUJFR0ExVUVDaE1LYTNWaVpYSnVaWFJsY3pBZUZ3MHlOakExTWpJeU1EVTBOVFZhRncwek5qQTFNVGt5TURVMApOVFZhTUJVeEV6QVJCZ05WQkFvVENtdDFZbVZ5Ym1WMFpYTXdXVEFUQmdjcWhrak9QUUlCQmdncWhrak9QUU1CCkJ3TkNBQVJtdS8reHU4SWozdWNtWGJ4ZVhHQ2xPWlZReEtFNTBRZi9lM2FZcnlGWjBtR1cvdTdsay85SXlRK1MKc1VncWxBMFBEdFFjZnFtNnpuQVJHNURkSEh4WG8yRXdYekFPQmdOVkhROEJBZjhFQkFNQ0FvUXdIUVlEVlIwbApCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPCkJCWUVGTXFFbzF4cWFUS1FyQjBhOEpucVdWV0xWVUtYTUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSVFEY0g5TTkKVEQwd3oxSnhYOHZmS0RsckFEY1phUXh6Y1hPQThQQVRacllnQUFJZ0g5d3FCSlZydGhqV3NsaEsvdlp5dnJUagplTXRpeXRCS3JSWU5XVGNtbEw4PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         key: ""
     # Configures cluster member discovery.
     discovery:
