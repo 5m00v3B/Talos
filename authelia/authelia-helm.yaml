@@ -1,0 +1,82 @@
+# authelia-values.yaml
+
+# 1. Base Configuration Block Map
+configMap:
+  theme: dark
+
+  access_control:
+    default_policy: 'deny'
+    rules:
+      - domain: 'auth.jusdeadly.ca'
+        policy: 'bypass'
+      - domain: ['*.jusdeadly.ca']
+        policy: 'two_factor'
+
+  session:
+    name: authelia_session
+    same_site: lax
+    cookies:
+      - domain: jusdeadly.ca
+        subdomain: auth
+
+  telemetry:
+    metrics:
+      enabled: true
+
+  authentication_backend:
+    password_reset:
+      disable: true
+    file:
+      enabled: true
+      path: /config/users.yml
+
+  storage:
+    local:
+      enabled: true
+      path: /config/db.sqlite3
+
+  notifier:
+    filesystem:
+      enabled: true
+      filename: /config/notifications.txt
+
+# 2. Secret Schema Block
+secret:
+  existingSecret: authelia-secrets
+
+# 3. Handle Persistence
+persistence:
+  enabled: true
+  storageClass: ""
+  existingClaim: "authelia-config-pvc"
+
+# 4. Corrected Security Configuration Section
+pod:
+  securityContext:
+    # Pod-level settings
+    pod:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+    
+    # Container-level settings
+    container:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: false
+
+
+service:  
+  type: LoadBalancer
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: "192.168.1.233" 
+  externalTrafficPolicy: Local
+#  ports:
+#    http:
+  port: 9091
+      

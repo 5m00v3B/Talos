@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authelia-users-bootstrap
+  namespace: authelia
+data:
+  users.yml: |
+    users:
+      aadmin:
+        disabled: false
+        displayname: "Cluster Admin"
+        password: '$pbkdf2-sha512$310000$yWZWcLyrxxwbUXXJm7lvIQ$yV0.BFeWzkKHOKe.ilCnKy.BAxLNUP2MOZxH62k8udkiI9/X4No5yhkqxtAmBNIqxFf.axDetkZpnac/Gxnrjw'
+        email: brenden.claypool@gmail.com
+        groups:
+          - admins
+          
+#users:
+#  admin:
+#    disabled: false
+#    displayname: "Cluster Admin"
+#    # This hash corresponds to the password: password
+#    password: "$pbkdf2-sha512$310000$yWZWcLyrxxwbUXXJm7lvIQ$yV0.BFeWzkKHOKe.ilCnKy.BAxLNUP2MOZxH62k8udkiI9/X4No5yhkqxtAmBNIqxFf.axDetkZpnac/Gxnrjw"
+#    email: brenden.claypool@gmail.com
+#    groups:
+#      - admins

@@ -10,7 +10,7 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    path: /mnt/Pool01_4TB_Mirror/Talos/homer
+    path: /mnt/Pool01_4TB_Mirror/Talos
     server: truenas
 ---
 apiVersion: v1

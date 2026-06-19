@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: homer-nfs-pv
+  name: authelia-nfs-pv
 spec:
   capacity:
     storage: 1Gi
@@ -9,19 +9,22 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: "" # <-- Explicitly set to empty string
   nfs:
-    path: /mnt/Pool01_4TB_Mirror/Talos/homer
+    path: /mnt/Pool01_4TB_Mirror/Talos/authelia
     server: truenas
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: homer-config-pvc
-  namespace: default
+  name: authelia-config-pvc
+  namespace: authelia # <-- Must match Authelia's deployment namespace
 spec:
   accessModes:
     - ReadWriteMany
+  storageClassName: "" # <-- Tells K8s to look for your explicit PV
   resources:
     requests:
       storage: 1Gi
-  volumeName: homer-nfs-pv
+  volumeName: authelia-nfs-pv
+  

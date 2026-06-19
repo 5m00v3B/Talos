@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actual
+  namespace: default
+  labels:
+    app: actual
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actual
+  template:
+    metadata:
+      labels:
+        app: actual
+    spec:
+      # --- THIS GUARANTEES HIGH AVAILABILITY ACROSS NODES ---
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - actual
+              topologyKey: "kubernetes.io/hostname"
+      # -----------------------------------------------------
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: actual
+          image: actualbudget/actual-server:latest
+          ports:
+            - containerPort: 5006
+              name: http
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: nfs-config-volume
+              mountPath: /data #/www/assets
+          env:
+            - name: INIT_ASSETS
+              value: "0"
+            - name: ACTUAL_HTTPS_KEY
+              value: "/data/selfhost.key"
+            - name: ACTUAL_HTTPS_CERT
+              value: "/data/selfhost.crt"
+      volumes:
+        - name: nfs-config-volume
+          persistentVolumeClaim:
+            claimName: actual-config-pvc
